@@ -1,3 +1,11 @@
+C_RESET = '\033[0m'
+C_CYAN = '\033[96m'
+C_GREEN = '\033[92m'
+C_YELLOW = '\033[93m'
+C_RED = '\033[91m'
+C_MAGENTA = '\033[95m'
+C_BOLD = '\033[1m'
+
 # 1-Metni Tersine Çeviren Sınıf
 class MetinTersCevirici:
     def __init__(self, metin):
@@ -33,9 +41,9 @@ class SifreCozucu:
         self.sifreli_metin = sifreli_metin
 
     def coz(self):
-        print(f"Ele Geçirilen Şifreli Metin: {self.sifreli_metin}")
-        print("Ters Metin\t\tDüz Metin")
-        print("-" * 60)
+        print(f"{C_YELLOW}Ele Geçirilen Şifreli Metin: {self.sifreli_metin}{C_RESET}")
+        print(f"{C_CYAN}{C_BOLD}Ters Metin      \t\t          Düz Metin{C_RESET}")
+        print(f"{C_CYAN}{'-' * 60}{C_RESET}")
 
         for key in range(26):
             cozulmus_ters_metin = ""
@@ -50,24 +58,23 @@ class SifreCozucu:
             # Düz Metin
             duz_metin = cozulmus_ters_metin[::-1]
 
-            print(f"Key {key:<4} : {cozulmus_ters_metin:<25} : {duz_metin}")
+            print(f"{C_MAGENTA}Key {key:<4}{C_RESET} : {C_YELLOW}{cozulmus_ters_metin:<25}{C_RESET} : {C_GREEN}{duz_metin}{C_RESET}")
 
 
-print("ŞİFRELEME SÜRECİ")
-girilen_metin = input("Lütfen bir metin giriniz:\n")
+print(f"{C_CYAN}{C_BOLD}ŞİFRELEME SÜRECİ{C_RESET}")
+girilen_metin = input(f"{C_MAGENTA}Lütfen bir metin giriniz:\n{C_RESET}")
 
-# 1. Aşama: Metni ters çevir
 tersleyici = MetinTersCevirici(girilen_metin)
 ters_metin = tersleyici.ters_cevir()
-print("Ters Çevrilmiş hali:")
-print(ters_metin)
+print(f"{C_YELLOW}Ters Çevrilmiş hali:{C_RESET}")
+print(f"{C_GREEN}{ters_metin}{C_RESET}")
 
 anahtar = 3
 sifreleyici = SezarSifreleyici(ters_metin, anahtar)
 sifreli_metin = sifreleyici.sifrele()
-print("Sezar ile Şifrelenmiş hali:")
-print(sifreli_metin)
+print(f"{C_YELLOW}Sezar ile Şifrelenmiş hali:{C_RESET}")
+print(f"{C_GREEN}{sifreli_metin}{C_RESET}")
 
-print("\nŞİFRE ÇÖZME SÜRECİ")
+print(f"\n{C_CYAN}{C_BOLD}ŞİFRE ÇÖZME SÜRECİ{C_RESET}")
 cozucu = SifreCozucu(sifreli_metin)
 cozucu.coz()
