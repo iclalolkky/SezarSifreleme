@@ -69,7 +69,7 @@ ters_metin = tersleyici.ters_cevir()
 print(f"{C_YELLOW}Ters Çevrilmiş hali:{C_RESET}")
 print(f"{C_GREEN}{ters_metin}{C_RESET}")
 
-anahtar = 3
+anahtar = int(input(f"{C_MAGENTA}Lütfen öteleme sayısını giriniz:\n{C_RESET}"))
 sifreleyici = SezarSifreleyici(ters_metin, anahtar)
 sifreli_metin = sifreleyici.sifrele()
 print(f"{C_YELLOW}Sezar ile Şifrelenmiş hali:{C_RESET}")
