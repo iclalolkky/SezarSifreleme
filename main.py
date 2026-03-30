@@ -5,8 +5,9 @@ C_YELLOW = '\033[93m'
 C_RED = '\033[91m'
 C_MAGENTA = '\033[95m'
 C_BOLD = '\033[1m'
+#Konsol renklendirme icin renk kodlari yapay zeka ile yapilmistir.
 
-# 1-Metni Tersine Çeviren Sınıf
+# 1-Metni tersine ceviren sinif.
 class MetinTersCevirici:
     def __init__(self, metin):
         self.metin = metin
@@ -15,7 +16,7 @@ class MetinTersCevirici:
         return self.metin[::-1]
 
 
-# 2- Ters metni alıp Sezar Şifrelemesi yapan sınıf
+# 2- Ters metni kullanarak sezar sifresi yapan sinif.
 class SezarSifreleyici:
     def __init__(self, metin, anahtar):
         self.metin = metin
@@ -24,7 +25,7 @@ class SezarSifreleyici:
     def sifrele(self):
         sifreli_metin = ""
         for harf in self.metin:
-            # Boşluk veya noktalama işaretlerini atla
+            # Bosluk ve noktalama isaretlerini atla.
             if harf.isalpha():
                 baslangic = ord('A') if harf.isupper() else ord('a')
 
@@ -35,14 +36,14 @@ class SezarSifreleyici:
         return sifreli_metin
 
 
-# 3- Şifre Çözücü Sınıf
+# 3- Sifre cozucu sinif.
 class SifreCozucu:
     def __init__(self, sifreli_metin):
         self.sifreli_metin = sifreli_metin
 
     def coz(self):
         print(f"{C_YELLOW}Ele Geçirilen Şifreli Metin: {self.sifreli_metin}{C_RESET}")
-        print(f"{C_CYAN}{C_BOLD}Ters Metin      \t\t          Düz Metin{C_RESET}")
+        print(f"{C_CYAN}{C_BOLD}Ters Metin      \t\t            Düz Metin{C_RESET}")
         print(f"{C_CYAN}{'-' * 60}{C_RESET}")
 
         for key in range(26):
@@ -55,7 +56,6 @@ class SifreCozucu:
                 else:
                     cozulmus_ters_metin += harf
 
-            # Düz Metin
             duz_metin = cozulmus_ters_metin[::-1]
 
             print(f"{C_MAGENTA}Key {key:<4}{C_RESET} : {C_YELLOW}{cozulmus_ters_metin:<25}{C_RESET} : {C_GREEN}{duz_metin}{C_RESET}")
