@@ -1,3 +1,5 @@
+import time
+
 C_RESET = '\033[0m'
 C_CYAN = '\033[96m'
 C_GREEN = '\033[92m'
@@ -59,6 +61,7 @@ class SifreCozucu:
             duz_metin = cozulmus_ters_metin[::-1]
 
             print(f"{C_MAGENTA}Key {key:<4}{C_RESET} : {C_YELLOW}{cozulmus_ters_metin:<25}{C_RESET} : {C_GREEN}{duz_metin}{C_RESET}")
+            time.sleep(0.1)
 
 
 print(f"{C_CYAN}{C_BOLD}ŞİFRELEME SÜRECİ{C_RESET}")
